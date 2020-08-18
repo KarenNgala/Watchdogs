@@ -4,7 +4,7 @@ from . models import *
 class NeighbourhoodTestClass(TestCase):
 
         def setUp(self):
-            self.new_neighbourhood=Neighbourhood(name='killeleshwa',population=20101000)
+            self.new_neighbourhood=Neighbourhood(name='Langata',population=20101000)
         def tearDown(self):
             Neighbourhood.objects.all().delete()
 
@@ -27,7 +27,7 @@ class ProfileTestClass(TestCase):
 
     def setUp(self):
 
-        self.new_profile=Profile(bio='i love basketball')
+        self.new_profile=Profile(bio='blackie')
     # test for instance
     def test_instance(self):
         self.assertTrue(isinstance(self.new_profile,Profile))

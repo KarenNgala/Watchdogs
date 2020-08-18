@@ -1,22 +1,24 @@
 from django.test import TestCase
-from .models import Profile
-from django.contrib.auth.models import User
+from . models import *
+
+class NeighbourhoodTestClass(TestCase):
+
+        def setUp(self):
+            self.new_neighbourhood=Neighbourhood(name='killeleshwa',population=20101000)
+        def tearDown(self):
+            Neighbourhood.objects.all().delete()
 
 
-
-class ProfileTest(TestCase):
-    ''' test class for Profile model'''
-    def setUp(self):
-        ''' method called before each test case'''
-        self.user = User.objects.create_user(username='Water')
-
-    def tearDown(self):
-        ''' method to clear all setup instances after each test run '''
-        self.user.delete()
-
-    def test_profile_creation(self):
-        ''' method to test profile instance is created only once for each user '''
-        self.assertIsInstance(self.user.profile, Profile)
-        self.user.save()
-        self.assertIsInstance(self.user.profile, Profile)
-        
+        # test for instance
+        def test_instance(self):
+            self.assertTrue(isinstance(self.new_neighbourhood,Neighbourhood))
+        # test for save method
+        def test_save_neighbourhood(self):
+            self.new_neighbourhood.create_neigborhood()
+            neighborhood=Neighbourhood.objects.all()
+            self.assertTrue(len(neighborhood)>0)
+        def test_delete_neighbourhood(self):
+            self.new_neighbourhood.create_neigborhood()
+            self.new_neighbourhood.delete_neigborhood()
+            neighborhood=Neighbourhood.objects.all()
+            self.assertEqual(len(neighborhood),0)

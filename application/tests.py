@@ -25,9 +25,11 @@ class NeighbourhoodTestClass(TestCase):
 
 class ProfileTestClass(TestCase):
 
-    def setUp(self):
 
-        self.new_profile=Profile(bio='blackie')
+    def setUp(self):
+        self.new_user = User(username="Mercy", email="aprilkasha42@gmail.com", password="1234")
+        self.new_user.save()
+        self.new_profile = Profile(user=self.new_user,image="image.jpeg",bio="just testing")
     # test for instance
     def test_instance(self):
         self.assertTrue(isinstance(self.new_profile,Profile))

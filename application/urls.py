@@ -10,6 +10,11 @@ urlpatterns=[
     url('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     url('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),    
     url(r'^business/', views.business, name='business'),
+    url('all-hoods/',views.neighbourhoods,name='hood'),
+    url('new-hood/', views.create_neighbourhood, name='new-hood'),
+    url('join_hood/<id>', views.join_neighbourhood, name='join-hood'),
+    url('leave_hood/<id>', views.leave_neighbourhood, name='leave-hood'),
+    url('single_hood/<hood_id>', views.single_neighbourhood, name='single-hood'),
 ]
 
 if settings.DEBUG:

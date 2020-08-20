@@ -36,14 +36,7 @@ def home(request):
     return render(request, 'index.html')
 
 @login_required
-def profile(request):
-    
-
-    context = {
-        'u_form':u_form,
-        'p_form':p_form
-    }
-    
+def profile(request):    
     return render(request, 'registration/profile.html')
 
 def business(request):
@@ -52,7 +45,6 @@ def business(request):
     }
     return render(request, 'business.html', context)
 
-
 def neighbourhoods(request):
     all_hoods = Neighbourhood.objects.all()
     all_hoods = all_hoods[::-1]
@@ -60,7 +52,6 @@ def neighbourhoods(request):
         'all_hoods': all_hoods,
     }
     return render(request, 'neighbourhoods.html', params)
-
 
 def create_neighbourhood(request):
     if request.method == 'POST':
@@ -74,20 +65,17 @@ def create_neighbourhood(request):
         form = NeighbourHoodForm()
     return render(request, 'newhood.html', {'form': form})
 
-
 def join_neighbourhood(request, id):
     neighbourhood = get_object_or_404(Neighbourhood, id=id)
     request.user.profile.neighbourhood = neighbourhood
     request.user.profile.save()
     return redirect('hood')
 
-
 def leave_neighbourhood(request, id):
     hood = get_object_or_404(Neighbourhood, id=id)
     request.user.profile.neighbourhood = None
     request.user.profile.save()
     return redirect('hood')
-
 
 def single_neighbourhood(request, hood_id):
     hood = Neighbourhood.objects.get(id=hood_id)

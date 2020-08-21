@@ -17,6 +17,7 @@ class Neighbourhood(models.Model):
         self.delete()
 
 
+
 class Profile(models.Model):
     image=models.ImageField(default='default.jpg', upload_to='profile_pics')
     bio=models.CharField(max_length=300)
@@ -41,6 +42,8 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+
+
 class Business(models.Model):
     name=models.CharField(max_length=60)
     description=models.CharField(max_length=200)
@@ -54,8 +57,9 @@ class Business(models.Model):
     def delete_business(self):
         self.delete()
 
+
 class Post(models.Model):
+    image=models.ImageField(default='default.jpg', upload_to='posts')
     post=models.CharField(max_length=200)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     neighborhood=models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
-    

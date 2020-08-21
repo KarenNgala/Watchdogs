@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+<body>   
+    <div class="card text-white mt-5 offset-4 bg-secondary mb-5" style="max-width: 26rem;">
+        <div class="card-header"><h2>Neigbourhood</h2></div>
+        <div class="card-body">
+            <h2>You have been logged out</h2>
+          <a href="{% url 'login' %}">
+            <button type="button" class="btn btn-primary">
+                Log In Again
+            </button>
+        </a>
+        </div>
+      </div>
+</body>
+</html>
+{% endblock content %}

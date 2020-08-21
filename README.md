@@ -76,8 +76,6 @@ With all environment variables changed to suit your local copy of this repositor
 * [Karen Ngala](https://github.com/KarenNgala)
 * [Mercy Njoroge](https://github.com/Mercy-Njoroge)
 * [Bryson Mundia](https://github.com/Bryson69)
-* [Ashley Mosoti](https://github.com/NinahMo)
-
 
 ## License
 

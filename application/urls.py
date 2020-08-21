@@ -2,9 +2,16 @@ from . import views
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.contrib.auth import views as auth_views
 urlpatterns=[
     url(r'^$', views.home, name='home'),
+    url('profile/', views.profile, name='profile'),  
+    url(r'^business/', views.business, name='business'),
+    url('new-hood/', views.create_neighbourhood, name='new-hood'),
+    url(r'^leave_hood/$', views.leave_neighbourhood, name='leave-hood'),
+    url('single_hood/<hood_id>', views.single_neighbourhood, name='single-hood'),
+    url(r'^accounts/register/complete/$', views.join, name='complete'),
+    url(r'^join/(\d+)/$', views.join_btn, name='join'),
 ]
 
 if settings.DEBUG:

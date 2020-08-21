@@ -24,12 +24,13 @@ class NeighbourhoodTestClass(TestCase):
             self.assertEqual(len(neighborhood),0)
 
 class ProfileTestClass(TestCase):
-
-
     def setUp(self):
         self.new_user = User(username="Mercy", email="aprilkasha42@gmail.com", password="1234")
         self.new_user.save()
-        self.new_profile = Profile(user=self.new_user,image="image.jpeg",bio="just testing")
+
+        self.new_neighbourhood=Neighbourhood(name='Langata',population=20101000)
+        self.new_neighbourhood.save()
+        self.new_profile = Profile(user=self.new_user,image="image.jpeg",bio="just testing", hood=self.new_neighbourhood)
     # test for instance
     def test_instance(self):
         self.assertTrue(isinstance(self.new_profile,Profile))

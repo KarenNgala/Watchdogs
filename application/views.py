@@ -4,56 +4,32 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from .forms import UserRegisterForm,UserUpdateForm,BusinessForm,UpdateProfileForm, NeighbourHoodForm, PostForm
-from .models import *
+from .forms import *
 from django.http import Http404
+from .models import *
 
 # Create your views here.
-
-posts = [
-    {
-        'author': 'Bryson',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'August 27, 2020'
-    }
-]
-
-def register(request):
-    if request.method == 'POST':#post request
-        form = UserRegisterForm(request.POST)#new form that has data within request.POST
-        if form.is_valid():#makes sure data gotten is valid when submitted
-            form.save()#this will save the data 
-            username = form.cleaned_data.get('username')#
-            messages.success(request, f'Your account has been created and Your now logged into the app!')
-            return redirect('login')#accounts/register/complete/
-    else:#if its not successful then it will display the same page again
-        form = UserRegisterForm()
-    return render(request, 'django_registration/registration_form.html' ,{'form':form})
-
+@login_required(login_url='/accounts/login/')
+def home(request):
+    current_hood = request.user.profile.hood
+    posts = Post.objects.filter(neighborhood=current_hood.id).all()
+    if current_hood == None:
+        return redirect('complete')
+    else:
+        showing = Neighbourhood.objects.get(id=current_hood.id)
+    return render(request, 'index.html', {'hood':showing, 'posts':posts})
 
 
 @login_required(login_url='/accounts/login/')
-def home(request):
-    return render(request, 'index.html')
-
-@login_required
 def profile(request):    
     return render(request, 'registration/profile.html')
 
-def business(request):
-    context = {
-        'post':posts
-    }
-    return render(request, 'business.html', context)
 
-def neighbourhoods(request):
-    all_hoods = Neighbourhood.objects.all()
-    all_hoods = all_hoods[::-1]
-    params = {
-        'all_hoods': all_hoods,
-    }
-    return render(request, 'neighbourhoods.html', params)
+def business(request):
+    current_hood = request.user.profile.hood
+    business = Business.objects.filter(neighborhood=current_hood.id).all()
+    return render(request, 'business.html', {'business':business})
+
 
 def create_neighbourhood(request):
     if request.method == 'POST':
@@ -67,17 +43,12 @@ def create_neighbourhood(request):
         form = NeighbourHoodForm()
     return render(request, 'newhood.html', {'form': form})
 
-def join_neighbourhood(request, id):
-    neighbourhood = get_object_or_404(Neighbourhood, id=id)
-    request.user.profile.neighbourhood = neighbourhood
+
+def leave_neighbourhood(request):
+    request.user.profile.hood = None
     request.user.profile.save()
     return redirect('hood')
 
-def leave_neighbourhood(request, id):
-    hood = get_object_or_404(Neighbourhood, id=id)
-    request.user.profile.neighbourhood = None
-    request.user.profile.save()
-    return redirect('hood')
 
 def single_neighbourhood(request, hood_id):
     hood = Neighbourhood.objects.get(id=hood_id)

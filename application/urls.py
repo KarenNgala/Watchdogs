@@ -15,6 +15,8 @@ urlpatterns=[
     url('join_hood/<id>', views.join_neighbourhood, name='join-hood'),
     url('leave_hood/<id>', views.leave_neighbourhood, name='leave-hood'),
     url('single_hood/<hood_id>', views.single_neighbourhood, name='single-hood'),
+    url(r'^accounts/register/complete/$', views.join, name='complete'),
+    url(r'^join/(\d+)/$', views.join_btn, name='join'),
 ]
 
 if settings.DEBUG:

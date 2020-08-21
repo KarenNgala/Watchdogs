@@ -5,7 +5,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .forms import UserRegisterForm,UserUpdateForm,BusinessForm,UpdateProfileForm, NeighbourHoodForm, PostForm
-from .models import Neighbourhood, Profile, Business, Post 
+from .models import *
+from django.http import Http404
+
 # Create your views here.
 
 posts = [
@@ -99,3 +101,16 @@ def single_neighbourhood(request, hood_id):
         'posts': posts
     }
     return render(request, 'single_hood.html', params)
+
+def join(request):
+    hoods = Neighbourhood.objects.all()
+    return render(request, 'django_registration/registration_complete.html', {'hoods':hoods})
+
+def join_btn(request, hood_id):
+    selected_hood = Neighbourhood.objects.get(id=hood_id)
+    if request.user.profile.hood == None:
+        request.user.profile.hood = selected_hood
+        request.user.profile.save()
+        return redirect('home')
+    else:
+        alert('Bad request. You are already in a hood')

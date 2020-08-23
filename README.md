@@ -71,7 +71,7 @@ With all environment variables changed to suit your local copy of this repositor
 * <s>Models: Profile, Neighborhood, User, Business </s>
 * <s>Allow user to change their neighborhood on moving out</s>
 * <s>A user can only belong to one neighborhood at a time</s>
-* 
+* Update templates
 * Copy contact for emergency services like hospitals, fire departments and police stations
 * Allow users to create a new post
 

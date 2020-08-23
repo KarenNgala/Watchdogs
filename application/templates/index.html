@@ -41,56 +41,14 @@
     </div>
 </section>
 
-
-
-<section class="bg-testimonials" id="testimonials">
-    <div class="row">
-        <div id="googleMap" style="height:300px;width:99%;"></div>
-
-        <!-- Add Google Maps -->
-        <script src="http://maps.googleapis.com/maps/api/js"></script>
-        <script>
-            var myCenter = new google.maps.LatLng(-37.817110, 144.959128);
-
-            function initialize() {
-                var mapProp = {
-                    center: myCenter,
-                    zoom: 12,
-                    scrollwheel: false,
-                    draggable: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
-                var marker = new google.maps.Marker({
-                    position: myCenter,
-                });
-
-                marker.setMap(map);
-            }
-
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-    </div>
-    </div>
-</section>
-
 <!-- Footer -->
-<footer class="page-footer font-small" style="background-color: #48484b;">
+<footer class="page-footer font-small" style="background-color: #121213;">
 
-    <div style="background-color: #48484b;">
+    <div style="background-color: #121213;">
         <div class="container">
 
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center">
-
-                <!-- Grid column -->
-                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                    <h6 class="mb-0" style="color: snow;">Get connected with us on social networks!</h6>
-                </div>
-                <!-- Grid column -->
-
                 <!-- Grid column -->
                 <div class="col-md-6 col-lg-7 text-center text-md-right">
 
@@ -136,12 +94,6 @@
                 <p>
                     <a href="#!" style="color: snow;">Security</a>
                 </p>
-                <p>
-                    <a href="#!" style="color: snow;">Community</a>
-                </p>
-                <p>
-                    <a href="#!" style="color: snow;">NeighBours</a>
-                </p>
 
             </div>
             <!-- Grid column -->
@@ -167,10 +119,6 @@
                 <h6 class="text-uppercase font-weight-bold" style="color: snow;">Contact</h6>
                 <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p style="color: snow;">
-                    <i class="fas fa-home mr-3" style="color: snow;"></i> Nairobi, Kenya</p>
-                <p style="color: snow;">
-                    <i class="fas fa-envelope mr-3" style="color: snow;"></i> info@example.com</p>
-                <p style="color: snow;">
                     <i class="fas fa-phone mr-3" style="color: snow;"></i> + 254 62 78 34 65</p>
                 <p style="color: snow;">
                     <i class="fas fa-print mr-3" style="color: snow;"></i> + 254 67 45 14 67</p>
@@ -180,12 +128,6 @@
 
         </div>
         <!-- Grid row -->
-    </div>
-    <!-- end of footer Links -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3" style="color: snow;">© 2020 Copyright:
-        <a href="" style="color: snow;"> Watchdogs</a>
     </div>
 </footer>
 

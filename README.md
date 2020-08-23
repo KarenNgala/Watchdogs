@@ -63,6 +63,34 @@ Run automated tests for this system
 
 With all environment variables changed to suit your local copy of this repository, deploy the application to [Heroku](https://medium.com/@hdsingh13/deploying-django-app-on-heroku-with-postgres-as-backend-b2f3194e8a43) to see it live
 
+
+## User stories:
+
+* System admin should appoint a neighborhood admin who should be able to add information about neighborhoods for example: Add businesses, health care centers, police stations, etc. which a regular user cannot do.
+* Add search functionality for businesses in a neighborhood
+* <s>Models: Profile, Neighborhood, User, Business </s>
+* <s>Allow user to change their neighborhood on moving out</s>
+* <s>A user can only belong to one neighborhood at a time</s>
+* Update templates
+* Copy contact for emergency services like hospitals, fire departments and police stations
+* Allow users to create a new post
+
+
+## Endpoints
+
+| Endpoint   |      Functionality      |  Notes |
+|----------|:-------------:|------:|
+| POST /auth/signup |  Register a user | A Token should be provided |
+| POST /auth/login |    Login a user   |   A JWT Token should be provided |
+| POST /api/v1/join | Join a hood |     |
+| POST /api/v1/profile | Create posts on a hood |     |
+| PUT /api/v1/profile | Edit a profile |     |
+| POST /api/v1/create_hood | An Admin can create a hood |  Super Admin ( Implement CRUD functionality also )   |
+| POST /api/v1/manage_hood | An Admin can appoint a user as a hood manager |   Appointed Admin  |
+| GET /api/v1/hoods | View hoods |     |
+| GET /api/v1/view_hood | 	View hoods information |     |
+
+
 ## Built With
 
 * [Django 3.1](https://www.djangoproject.com/) - The web framework used

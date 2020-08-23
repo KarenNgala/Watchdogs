@@ -7,9 +7,7 @@ urlpatterns=[
     url(r'^$', views.home, name='home'),
     url('profile/', views.profile, name='profile'),  
     url(r'^business/', views.business, name='business'),
-    url('new-hood/', views.create_neighbourhood, name='new-hood'),
     url(r'^leave_hood/$', views.leave_neighbourhood, name='leave-hood'),
-    url('single_hood/<hood_id>', views.single_neighbourhood, name='single-hood'),
     url(r'^accounts/register/complete/$', views.join, name='complete'),
     url(r'^join/(\d+)/$', views.join_btn, name='join'),
 ]
